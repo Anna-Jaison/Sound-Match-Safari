@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An accessible sound-based memory game for children with disabilities.">
     <title>Sound Match Safari</title>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Link to external CSS file -->
@@ -12,7 +14,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="game-container">
+    <div id="start-screen" class="start-screen text-center p-8">
+        <h2 class="text-3xl font-bold mb-4">Welcome to Sound Match Safari!</h2>
+        <p class="mb-6">Click the button below to begin your adventure.</p>
+        <button id="start-btn" class="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-600">
+        Start Safari
+        </button>
+    </div>
+
+    <div id="game-container" class="game-container hidden">
         <h1 class="text-4xl font-extrabold mb-6">Sound Match Safari</h1>
         <div class="game-info">
             <div id="score-display">Score: 0</div>
