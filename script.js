@@ -7,10 +7,6 @@ const animals = [
     { name: 'Cat', sound: 'meow', image: 'https://placehold.co/100x100/FFB6C1/000000?text=Cat',audio: 'https://cdn.pixabay.com/audio/2022/03/15/audio_444b3f7b0a.mp3'}
 ];
 
-const startScreen = document.getElementById("start-screen");
-const startBtn = document.getElementById("start-btn");
-const gameContainer = document.getElementById("game-container");
-
 let gameBoard = document.getElementById('game-board');
 let messageBox = document.getElementById('message-box');
 let resetButton = document.getElementById('reset-button');
@@ -246,17 +242,4 @@ hintButton.addEventListener('click', getHint);
 playAgainButton.addEventListener('click', initializeGame);
 
 // Initialize the game when the page loads
-window.onload = () => {
-    startBtn.addEventListener("click", () => {
-        startScreen.style.display = "none";
-        gameContainer.classList.remove("hidden");
-        initializeGame();
-        playSound("Welcome to Sound Match Safari!");
-    });
-};
-
-
-// Better - trigger after button click
-document.getElementById("start-btn").addEventListener("click", () => {
-  speak("Welcome to Sound Match Safari!");
-});
+window.onload = initializeGame;
