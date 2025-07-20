@@ -1,0 +1,348 @@
+
+/* Custom styles to ensure Roboto font and enhance aesthetics */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000000;
+    color: #e2e8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.game-container {
+    background-color: #1a202c;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h1 {
+    color: #63b3ed;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.card {
+    background-color: #4a5568;
+    border-radius: 15px;
+    padding: 20px 10px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 3px solid transparent;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card.flipped {
+    background-color: #63b3ed;
+    border-color: #4299e1;
+}
+
+.card.matched {
+    background-color: #48bb78;
+    border-color: #38a169;
+    pointer-events: none;
+}
+
+.card.incorrect {
+    background-color: #fca5a5;
+    border-color: #ef4444;
+}
+
+.card img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+    object-fit: contain;
+    display: none;
+}
+
+.card.flipped img {
+    display: block;
+}
+
+/* Updated overlay-text */
+.card .overlay-text {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e2e8f0;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    display: block;
+    padding: 0 5px;
+    z-index: 2;
+    white-space: normal;
+}
+
+.card.flipped .overlay-text {
+    display: none;
+}
+
+/* Updated sound button */
+.card .sound-button {
+    background-color: #4299e1;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+    position: relative;
+}
+
+.card.flipped .sound-button {
+    display: none;
+}
+
+.message-box {
+    background-color: #2d3748;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e2e8f0;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #cbd5e0;
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.control-button {
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.control-button.reset-button {
+    background-color: #e53e3e;
+}
+
+.control-button.hint-button {
+    background-color: #ed8936;
+}
+
+.control-button:hover {
+    background-color: #c53030;
+    transform: translateY(-2px);
+}
+
+.control-button.hint-button:hover {
+    background-color: #dd6b20;
+}
+
+.control-button:focus {
+    outline: 3px solid #fbb6ce;
+    outline-offset: 2px;
+}
+
+.control-button.hint-button:focus {
+    outline: 3px solid #fbd38d;
+    outline-offset: 2px;
+}
+
+.sound-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Win Modal Styles */
+.win-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.win-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.win-modal-content {
+    background-color: #2d3748;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    transform: scale(0.8);
+    transition: transform 0.3s ease-in-out;
+}
+
+.win-modal-overlay.show .win-modal-content {
+    transform: scale(1);
+}
+
+.win-modal-content h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #48bb78;
+    margin-bottom: 15px;
+}
+
+.win-modal-content p {
+    font-size: 1.5rem;
+    color: #e2e8f0;
+    margin-bottom: 25px;
+}
+
+.win-modal-content button {
+    background-color: #4299e1;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.win-modal-content button:hover {
+    background-color: #3182ce;
+    transform: translateY(-2px);
+}
+
+.win-modal-content button:focus {
+    outline: 3px solid #90cdf4;
+    outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-board {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    .card {
+        height: 150px;
+        padding: 15px 10px;
+    }
+
+    .card .sound-button {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .card .overlay-text {
+        font-size: 1.1rem;
+    }
+
+    .message-box {
+        font-size: 1rem;
+    }
+
+    .control-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .win-modal-content h2 {
+        font-size: 2rem;
+    }
+
+    .win-modal-content p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+        height: 120px;
+    }
+
+    .card .sound-button {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .card .overlay-text {
+        font-size: 1rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .control-button {
+        width: 100%;
+    }
+}

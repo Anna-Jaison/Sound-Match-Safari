@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Match Safari</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts - Roboto (a standard, nice font) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="text-4xl font-extrabold mb-6">Sound Match Safari</h1>
+        <div class="game-info">
+            <div id="score-display">Score: 0</div>
+            <div id="timer-display">Time: 00:00</div>
+        </div>
+        <div id="game-board" class="game-board">
+            <!-- Cards will be dynamically inserted here by JavaScript -->
+        </div>
+        <div id="message-box" class="message-box">
+            Click on a card to hear a sound!
+        </div>
+        <div class="controls">
+            <button id="reset-button" class="control-button reset-button">
+                Restart Game
+            </button>
+            <button id="hint-button" class="control-button hint-button">
+                Get a Hint
+            </button>
+        </div>
+    </div>
+
+    <!-- Win Modal -->
+    <div id="win-modal-overlay" class="win-modal-overlay">
+        <div class="win-modal-content">
+            <h2>Congratulations!</h2>
+            <p id="win-message"></p>
+            <button id="play-again-button">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
