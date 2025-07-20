@@ -243,3 +243,8 @@ playAgainButton.addEventListener('click', initializeGame);
 
 // Initialize the game when the page loads
 window.onload = initializeGame;
+
+// Better - trigger after button click
+document.getElementById("start-btn").addEventListener("click", () => {
+  speak("Welcome to Sound Match Safari!");
+});
